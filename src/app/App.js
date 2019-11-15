@@ -1,5 +1,6 @@
 import './App.css';
 
+import { Link } from 'react-router-dom'
 import React from 'react';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <Link to="/about">About page \o/</Link>
         <a
           className="App-link"
           href="https://reactjs.org"
