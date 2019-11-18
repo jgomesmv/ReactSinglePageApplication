@@ -1,0 +1,8 @@
+.p-game {
+  display: flex;
+  flex-direction: row;
+
+  &__gameInfo {
+    margin-left: 20px;
+  }
+}

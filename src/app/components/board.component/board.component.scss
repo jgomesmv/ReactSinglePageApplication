@@ -1,0 +1,15 @@
+.c-board {
+  display: block;
+
+  &__status {
+    margin-bottom: 10px;
+  }
+
+  &__row {
+    &:after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+  }
+}

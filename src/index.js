@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import AboutPage from './app/pages/about/about.page';
 import App from './app/App';
+import GamePage from './app/pages/game/game.page';
 import NoResultPage from './app/pages/no-result/no-result.page';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Switch>
       <Route path="/" exact={true} component={App} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/game" component={GamePage} />
       <Route path='*' component={NoResultPage} />
     </Switch>
   </BrowserRouter>, 
