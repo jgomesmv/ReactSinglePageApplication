@@ -6,30 +6,31 @@ import SquareComponent from '../square.component/square.component';
 
 export default class BoardComponent extends PureComponent { 
   renderSquare(i) {
-    return <SquareComponent value={i}/>;
+    return <SquareComponent
+      key={`square-${i}`}
+      value={this.props.squares[i]}
+      onClick={() => this.props.onClick(i)}/>;
   }
   
   render () {
-    const status = 'Next player: X';
-  
+    let numberOfRows = 3;
+    let numberOfColumns = 3;
+    let squareNumber = 0; 
     return (
       <div className="c-board">
-        <div className="c-board__status">{status}</div>
-        <div className="c-board__row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="c-board__row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="c-board__row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {Array.from(Array(numberOfRows)).map((value, index) =>{
+          return (
+            <div
+              key={`row-${index}`}
+              className="c-board__row">
+              {Array.from(Array(numberOfColumns)).map(() => {
+                const square = this.renderSquare(squareNumber);
+                squareNumber++;
+                return square;
+              })}
+            </div>
+          );
+        })}
       </div>
     );
   }
