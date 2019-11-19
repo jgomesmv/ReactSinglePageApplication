@@ -75,20 +75,27 @@ export default class GamePage extends Component {
       xIsNext: (step % 2) === 0,
     });
   }
+
+  getStatus(winner) {
+    let statusLabel;
+    let status;
+    if (winner) {
+      statusLabel = "Winner: ";
+      status = winner;
+    } else {
+      statusLabel = "Next player: "
+      status = (this.state.xIsNext ? 'X' : 'O');
+    }
+
+    return { label: statusLabel, value: status};
+  }
   
   render () {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = this.calculateWinner(current.squares);
-
     const moves = this.historyMoves(history);
-
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
+    const status = this.getStatus(winner);
     
     return (
       <div className="p-game">
@@ -97,8 +104,10 @@ export default class GamePage extends Component {
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}/>
         </div>
-        <div className="p-game__gameInfo">
-          <div>{status}</div>
+        <div className="p-game__info">
+          <div>
+            <p><span className="p-game__statusLabel">{status.label}</span>{status.value}</p>
+          </div>
           <ol>{moves}</ol>
         </div>
       </div>
